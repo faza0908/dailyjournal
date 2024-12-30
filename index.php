@@ -288,8 +288,8 @@ include "koneksi.php";
           <br>
         </div>
         <div class="">
-          <div class="h6">A11.2023.15003</div>
-          <h2 class="h3 fw-bold display-6">Daniel Aquaries Pratama</h2>
+          <div class="h6">A11.2023.15395</div>
+          <h2 class="h3 fw-bold display-6">Faza Althaf Naufal Rafif</h2>
           <div class="h6 text-tertiary">Program Studi Teknik Informatika</div>
           <div class="h6">
             <b>Universitas Dian Nuswantoro</b>
@@ -303,12 +303,12 @@ include "koneksi.php";
     <div>
       <a href="https://www.instagram.com/daniel.aq.p/"><i class="ikon bi bi-instagram h2 p-2 text-dark"></i></a>
       <a href="https://wa.me/+6282134893829"><i class="ikon bi bi-whatsapp h2 p-2 text-dark"></i></a>
-      <a href="https://www.tiktok.com/@daniel.aq.2341">
+      <a href="https://www.tiktok.com/@paza">
         <i class="ikon bi bi-tiktok h2 p-2 text-dark"></i>
       </a>
     </div>
 
-    <div id="copyright">Daniel Aquaries Pratama &copy; 2024</div>
+    <div id="copyright">Faza Altnaufar &copy; 2024</div>
   </footer>
 
   <script type="text/javascript">
