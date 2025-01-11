@@ -1,2 +1,3 @@
 Link After Hosting
-fazajournal.free.nf
+
+http://fazajournal.free.nf/index.php
