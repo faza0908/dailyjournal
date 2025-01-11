@@ -7,7 +7,7 @@ include "koneksi.php";
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Daily Journal Daniel</title>
+  <title>Daily Journal Faza</title>
   <link rel="icon"
     href="https://images.unsplash.com/photo-1720293315632-37efe958d5ec?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw1fHx8ZW58MHx8fHx8" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
@@ -69,7 +69,7 @@ include "koneksi.php";
     <div class="container">
       <div class="d-sm-flex flex-sm-row-reverse align-items-center">
         <img
-          src="https://images.unsplash.com/photo-1730462826088-ef07f32b2629?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw5fHx8ZW58MHx8fHx8"
+          src="https://assets.onecompiler.app/433g2d366/434jmu97f/WhatsApp%20Image%202024-01-16%20at%2013.03.49_596d529a.jpg"
           class="rounded img-fluid" width="300" />
         <div>
           <h1 class="h1 fw-bold display-4">
@@ -121,53 +121,44 @@ include "koneksi.php";
     </div>
   </section>
   <!-- article end -->
-  <section id="gallery" class="text-center p-5 bg-danger-subtle">
-    <div class="container">
-      <h1 class="h1 fw-bold display-4 pb-3">Gallery</h1>
-
-      <div id="carouselExample" class="carousel slide">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img
-              src="https://plus.unsplash.com/premium_photo-1729431432391-673fb2b5750f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyOHx8fGVufDB8fHx8fA%3D%3D"
-              class="d-block w-100" alt="..." />
-          </div>
-
-          <div class="carousel-item">
-            <img
-              src="https://images.unsplash.com/photo-1728632286888-04c64f48e506?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzMnx8fGVufDB8fHx8fA%3D%3D"
-              class="d-block w-100" alt="..." />
-          </div>
-
-          <div class="carousel-item">
-            <img
-              src="https://plus.unsplash.com/premium_photo-1729431432391-673fb2b5750f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyOHx8fGVufDB8fHx8fA%3D%3D"
-              class="d-block w-100" alt="..." />
-          </div>
-
-          <div class="carousel-item">
-            <img
-              src="https://images.unsplash.com/photo-1728632286888-04c64f48e506?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzMnx8fGVufDB8fHx8fA%3D%3D"
-              class="d-block w-100" alt="..." />
-          </div>
-
-          <div class="carousel-item">
-            <img
-              src="https://plus.unsplash.com/premium_photo-1729431432391-673fb2b5750f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyOHx8fGVufDB8fHx8fA%3D%3D"
-              class="d-block w-100" alt="..." />
-          </div>
+     <!-- gallery begin -->
+    <section id="gallery" class="text-center p-5 bg-danger-subtle">
+      <h1 class="fw-bold display-4 pb-3">Gallery</h1>
+      <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner ratio ratio-16x9">
+          <?php
+          // Koneksi ke database
+          include 'koneksi.php';
+          
+          // Query untuk mengambil data dari tabel gallery
+          $sql_gallery = "SELECT * FROM gallery";
+          $result = $conn->query($sql_gallery); 
+          
+          $first = true; // Variable untuk menandai item pertama
+          
+          while($row = mysqli_fetch_assoc($result)) {
+            // Tambahkan class active untuk item pertama
+            $activeClass = $first ? 'active' : '';
+          ?>
+            <div class="carousel-item <?php echo $activeClass; ?>" data-bs-interval="2000">
+              <img src="img/<?= $row["gambar"]?>" class="d-block w-100">
+            </div>
+          <?php
+            $first = false; // Set false setelah item pertama
+          }
+          ?>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
       </div>
-    </div>
-  </section>
+    </section>
+    <!-- gallery end -->
 
   <section id="schedule" class="text-center p-5">
     <div class="container">
@@ -281,15 +272,15 @@ include "koneksi.php";
     <div class="container">
       <div class="d-sm-flex flex-sm-row align-items-center justify-content-center">
         <div class="">
-          <img src="https://kulino.dinus.ac.id/pluginfile.php/1812494/user/icon/lambda/f1?rev=8813614"
+          <img src="https://kulino.dinus.ac.id/pluginfile.php/1855957/user/icon/lambda/f1?rev=9883611"
             class="rounded-circle d-block img-fluid mx-4" width="300" />
         </div>
         <div class="">
           <br>
         </div>
         <div class="">
-          <div class="h6">A11.2023.15003</div>
-          <h2 class="h3 fw-bold display-6">Daniel Aquaries Pratama</h2>
+          <div class="h6">A11.2023.15395</div>
+          <h2 class="h3 fw-bold display-6">Faza Althaf Naufal Rafif</h2>
           <div class="h6 text-tertiary">Program Studi Teknik Informatika</div>
           <div class="h6">
             <b>Universitas Dian Nuswantoro</b>
@@ -301,14 +292,14 @@ include "koneksi.php";
 
   <footer id="footer" class="text-center p-5">
     <div>
-      <a href="https://www.instagram.com/daniel.aq.p/"><i class="ikon bi bi-instagram h2 p-2 text-dark"></i></a>
-      <a href="https://wa.me/+6282134893829"><i class="ikon bi bi-whatsapp h2 p-2 text-dark"></i></a>
-      <a href="https://www.tiktok.com/@daniel.aq.2341">
+      <a href="https://www.instagram.com"><i class="ikon bi bi-instagram h2 p-2 text-dark"></i></a>
+      <a href="https://wa.me"><i class="ikon bi bi-whatsapp h2 p-2 text-dark"></i></a>
+      <a href="https://www.tiktok.com/@paza">
         <i class="ikon bi bi-tiktok h2 p-2 text-dark"></i>
       </a>
     </div>
 
-    <div id="copyright">Daniel Aquaries Pratama &copy; 2024</div>
+    <div id="copyright">Faza Althaf &copy; 2024</div>
   </footer>
 
   <script type="text/javascript">

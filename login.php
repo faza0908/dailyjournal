@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = md5($_POST['password']);
 
     //prepared statement
-    $stmt = $conn->prepare("SELECT username 
+    $stmt = $conn->prepare("SELECT * 
                           FROM user_web 
                           WHERE username=? AND password=?");
 
@@ -37,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($row)) {
         //jika ada, simpan variable username pada session
         $_SESSION['username'] = $row['username'];
+        $_SESSION['id'] = $row['id'];
 
         //mengalihkan ke halaman admin
         header("location:admin.php");
@@ -77,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="card-body">
                             <div class="text-center mb-3">
                                 <i class="bi bi-person-circle h1 display-4"></i>
-                                <p>Welcome to My Daily Journal</p>
+                                <p>Wellcome to My Daily Journal</p>
                                 <hr />
                             </div>
                             <form action="" method="post">

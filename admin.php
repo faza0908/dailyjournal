@@ -18,6 +18,7 @@ if (!isset($_SESSION['username'])) {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <style>
     #content {
       min-height: 460px;
@@ -42,6 +43,12 @@ if (!isset($_SESSION['username'])) {
           <li class="nav-item">
             <a class="nav-link" href="admin.php?page=article">Article</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admin.php?page=gallery">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.php">Homepage</a>
+          </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-danger fw-bold" href="#" role="button" data-bs-toggle="dropdown"
               aria-expanded="false">
@@ -49,6 +56,7 @@ if (!isset($_SESSION['username'])) {
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+              <li><a class="dropdown-item" href="admin.php?page=profile">Profile <?= $_SESSION['username'] ?></a></li>
             </ul>
           </li>
         </ul>
@@ -59,21 +67,21 @@ if (!isset($_SESSION['username'])) {
   <!-- content begin -->
   <section id="content" class="p-5">
     <div class="container">
+      <?php
+      if (isset($_GET['page'])) {
+        ?>
+        <h4 class="lead display-6 pb-2 border-bottom border-danger-subtle"><?= ucfirst($_GET['page']) ?></h4>
         <?php
-        if(isset($_GET['page'])){
+        include($_GET['page'] . ".php");
+      } else {
         ?>
-            <h4 class="lead display-6 pb-2 border-bottom border-danger-subtle"><?= ucfirst($_GET['page'])?></h4>
-            <?php
-            include($_GET['page'].".php");
-        }else{
-        ?>
-            <h4 class="lead display-6 pb-2 border-bottom border-danger-subtle">Dashboard</h4>
-            <?php
-            include("dashboard.php");
-        }
-        ?>
+        <h4 class="lead display-6 pb-2 border-bottom border-danger-subtle">Dashboard</h4>
+        <?php
+        include("dashboard.php");
+      }
+      ?>
     </div>
-</section>
+  </section>
   <!-- content end -->
   <!-- footer begin -->
   <footer class="text-center p-5 bg-danger-subtle">
@@ -82,7 +90,7 @@ if (!isset($_SESSION['username'])) {
       <a href="https://twitter.com/udinusofficial"><i class="bi bi-twitter h2 p-2 text-dark"></i></a>
       <a href="https://wa.me/+62812685577"><i class="bi bi-whatsapp h2 p-2 text-dark"></i></a>
     </div>
-    <div>Daniel Aquaries Pratama &copy; 2024</div>
+    <div>Faza Althaf &copy; 2024</div>
   </footer>
   <!-- footer end -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
